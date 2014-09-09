@@ -1,9 +1,6 @@
 groovy-databases
 ================
 
-groovy-transforms
-=================
-
 Example code for the talk:
 
 http://slideshare.net/paulk_asert/groovy-databases
