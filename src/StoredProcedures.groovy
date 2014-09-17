@@ -1,11 +1,11 @@
-@Grab('org.hsqldb:hsqldb:2.3.2')
+//@Grab('org.hsqldb:hsqldb:2.3.2')
 import groovy.sql.Sql
 import groovy.transform.Field
 import org.hsqldb.jdbc.JDBCDataSource
 import java.util.logging.*
 
-@Lazy @Field Sql db = new Sql(new JDBCDataSource(
-        database: 'jdbc:hsqldb:mem:GIA', user: 'sa', password: ''))
+@Field Sql db = new Sql(new JDBCDataSource(
+        database: 'jdbc:hsqldb:mem:marathon', user: 'sa', password: ''))
 
 def reset() {
   db.execute '''

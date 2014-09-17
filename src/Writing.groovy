@@ -14,7 +14,7 @@ def DDL = """
       lastname    VARCHAR(64),
       dateOfBirth DATE,
     );
-    """
+"""
 
 sql.execute(DDL)
 
@@ -32,6 +32,7 @@ sql.execute """
 String athleteInsert = 'INSERT INTO Athlete (firstname, lastname) VALUES (?,?)'
 def keys = sql.executeInsert athleteInsert, ['Ronaldo', 'da Costa']
 assert keys[0] == [2]
+
 def rowsUpdated = sql.executeUpdate '''
     UPDATE Athlete SET dateOfBirth='1970-06-07' where lastname='da Costa'
 '''

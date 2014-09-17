@@ -1,6 +1,7 @@
 import groovy.sql.Sql
 
 import static java.sql.ResultSet.CONCUR_READ_ONLY
+
 // ...
 def sql = Sql.newInstance(
         url: 'jdbc:hsqldb:mem:marathon',
@@ -11,6 +12,6 @@ def sql = Sql.newInstance(
         resultSetConcurrency: CONCUR_READ_ONLY
 )
 
-// use 'sql' instance
+// use 'sql' instance ...
 
 sql.close()

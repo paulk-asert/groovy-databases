@@ -1,3 +1,5 @@
+// sample using Apache Commons DBCP connection pool and DataSource constructor
+
 @Grab('org.hsqldb:hsqldb:2.3.2')
 @Grab('commons-dbcp:commons-dbcp:1.4')
 import groovy.sql.Sql
@@ -10,6 +12,6 @@ def dataSource = new BasicDataSource(
         username: 'sa', password: '')
 def sql = new Sql(dataSource)
 
-// use 'sql' instance
+// use 'sql' instance ...
 
 sql.close()
