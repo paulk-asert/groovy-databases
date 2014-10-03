@@ -109,6 +109,7 @@ sql.withTransaction {
 }
 
 sql.execute "delete from Athlete where lastname = 'Tergat'"
+
 sql.withBatch { stmt ->
   stmt.addBatch '''
     INSERT INTO Athlete (firstname, lastname, dateOfBirth)

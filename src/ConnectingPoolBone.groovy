@@ -12,8 +12,6 @@ def dataSource = new BoneCPDataSource(config)
 def sql = new Sql(dataSource)
 
 // use 'sql' instance ...
-def result = sql.firstRow('SELECT 1 FROM INFORMATION_SCHEMA.SYSTEM_USERS')
-assert result[0] == 1
+assert sql.firstRow('SELECT 1 FROM INFORMATION_SCHEMA.SYSTEM_USERS')[0] == 1
 
 sql.close()
-/* */
