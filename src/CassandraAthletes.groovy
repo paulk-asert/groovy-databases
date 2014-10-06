@@ -1,4 +1,5 @@
 @Grab('com.datastax.cassandra:cassandra-driver-core:2.1.1')
+@Grab('com.datastax.cassandra:cassandra-driver-mapping:2.1.1')
 @Grab('org.slf4j:slf4j-simple:1.7.5')
 import com.datastax.driver.core.*
 
@@ -35,8 +36,17 @@ session.execute '''
     INSERT INTO marathon.athlete (id, firstname, lastname, dateOfBirth)
     VALUES (uuid(), 'Paul', 'Tergat', '1969-06-17')
 '''
+
+// also supports bound variables
+PreparedStatement ps = session.prepare '''
+        INSERT INTO marathon.athlete (id, firstname, lastname, dateOfBirth)
+        VALUES (uuid(), ?, ?, ?)
+'''
+def date = Date.parse('yyyy-MM-dd', '1971-12-22')
+session.execute(new BoundStatement(ps).bind('Khalid', 'Khannouchi', date))
+
 session.execute('SELECT * FROM marathon.athlete').each {
-    println "${it.getString('firstname')} ${it.getString('lastname')}"
+    println "${it.getString('firstname')} ${it.getString('lastname')} ${it.getDate('dateOfBirth').format('dd-MMM-yyyy')}"
 }
 session.close()
 cluster.close()
